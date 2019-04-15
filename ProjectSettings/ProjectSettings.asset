@@ -598,8 +598,8 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
-    Build: 1
-    Collab: 1
+    Build: 0
+    Collab: 0
     ErrorHub: 0
     Hub: 0
     UNet: 1
@@ -622,7 +622,7 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 6
-  cloudProjectId: aa390e92-dd3f-46a7-ab88-246f96238728
+  cloudProjectId: 206af4ed-a301-4199-8634-21cdb3e41af9
   framebufferDepthMemorylessMode: 0
   projectName: cloudtest
   organizationId: coutlass-supreme
