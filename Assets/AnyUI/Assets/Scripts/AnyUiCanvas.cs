@@ -34,8 +34,7 @@ namespace AnyUI
             get;
             set;
         }
-        
-         
+                  
         public override void Raycast(PointerEventData eventData, List<RaycastResult> resultAppendList)
         {
             if (eventData.GetHashCode() == pointerEventDataHashMask && InputPossible)

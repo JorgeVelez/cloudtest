@@ -1,7 +1,7 @@
 <?php
 $val = json_decode($HTTP_RAW_POST_DATA, true);
 
-$url = 'https://build-api.cloud.unity3d.com/api/v1/orgs/coutlass-supreme/projects/CloudTest/buildtargets/WinBuild/builds/'. $val["buildNumber"] .'/share';
+$url = 'https://build-api.cloud.unity3d.com/api/v1/orgs/coutlass-supreme/projects/cloudtest/buildtargets/winbuild/builds/'. $val["buildNumber"] .'/share';
 
 $result=requestCloudApi($url, 'POST'); 
 
