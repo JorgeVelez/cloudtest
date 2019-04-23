@@ -35,6 +35,7 @@ public class RemoteLogger : MonoBehaviour
 
         PlayerPrefs.SetInt("remoteLogger", 0);
 
+
         Application.RegisterLogCallback(null);
 
         instance.StopAllCoroutines();
@@ -66,10 +67,12 @@ public class RemoteLogger : MonoBehaviour
     const string n = "\n";
     void HandleLog(string logString, string stackTrace, LogType type)
     {
-        //if (type == LogType.Log) logs.Enqueue(logString);
-        if (type == LogType.Warning) logs.Enqueue(warning + logString);
+        if (type == LogType.Log) logs.Enqueue(logString);
+        else if (type == LogType.Warning) logs.Enqueue(warning + logString);
         else if (type == LogType.Error) logs.Enqueue(error + logString + n + stackTrace);
         else if (type == LogType.Exception) logs.Enqueue(exception + logString + n + stackTrace);
+
+        fileWriter.WriteLine(logString);
     }
 
     const string deviceId = "?deviceId=";
@@ -91,15 +94,9 @@ public class RemoteLogger : MonoBehaviour
                 var www = new WWW(url.ToString());
                 yield return www;
 
-                 if (www.error == null)
-				{
-					Debug.Log("WWW Ok!: " + www.text);
-				}
-				else {
-					Debug.Log("WWW Error: " + www.error);
-				}
+                // if (www.error != null) { }
 
-				www.Dispose();
+                www.Dispose();
             }
 
             yield return null;
@@ -124,4 +121,46 @@ public class RemoteLogger : MonoBehaviour
         }
         return strWtr.ToString();
     }
+
+
+    public bool useAbsolutePath = true;
+    public string fileName = "MyGame";
+
+    public string absolutePath = "/home/yourUsername/UnityLogs";
+
+    public string filePath;
+    public string filePathFull;
+    public int count = 0;
+
+    System.IO.StreamWriter fileWriter;
+
+    void OnEnable()
+    {
+        UpdateFilePath();
+        if (Application.isPlaying)
+        {
+            count = 0;
+            fileWriter = new System.IO.StreamWriter(filePathFull, false);
+            fileWriter.AutoFlush = true;
+            fileWriter.WriteLine("[");
+        }
+    }
+
+    void OnDisable()
+    {
+        if (Application.isPlaying)
+        {
+            fileWriter.WriteLine("\n]");
+            fileWriter.Close();
+        }
+    }
+
+    public void UpdateFilePath()
+    {
+        filePath = useAbsolutePath ? absolutePath : Application.persistentDataPath;
+        filePathFull = System.IO.Path.Combine(filePath, fileName + "." +
+            System.DateTime.Now.ToString("yyyy.MM.dd.HH.mm.ss") + ".json");
+    }
+
+
 }
