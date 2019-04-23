@@ -620,10 +620,10 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: bf9245c6-dea3-4af7-a567-2d4b6316db66
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: cloud2
+  organizationId: coutlass-supreme
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/AnyUI/Demo/Globe/Globe.unity
+    guid: b10b273a6149425419a67cd242de841f
   m_configObjects: {}
