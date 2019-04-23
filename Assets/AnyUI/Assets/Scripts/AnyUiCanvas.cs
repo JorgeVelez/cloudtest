@@ -50,7 +50,10 @@ namespace AnyUI
             if (Event.current != null && (Event.current.commandName == "SoftDelete" || Event.current.commandName == "Delete"))
             {
                 //destroy rendertexture,  camera
+#if UNITY_EDITOR //Editor only pre-processor
                 AssetDatabase.DeleteAsset("Assets/AnyUIRenderTexturesAndMaterials/" + eventCamera.targetTexture.name + ".renderTexture");
+#endif //
+
                 DestroyImmediate(eventCamera);
             }
             base.OnDestroy();
